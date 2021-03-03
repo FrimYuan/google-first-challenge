@@ -37,13 +37,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp(jumpDetail = { pos, dog ->
-                    Intent(this, DogDetailActivity::class.java).apply {
-                        putExtra("pos", pos)
-                        putExtra("data", dog)
-                        startActivityForResult(this, 111)
+                MyApp(
+                    jumpDetail = { pos, dog ->
+                        Intent(this, DogDetailActivity::class.java).apply {
+                            putExtra("pos", pos)
+                            putExtra("data", dog)
+                            startActivityForResult(this, 111)
+                        }
                     }
-                })
+                )
             }
         }
     }

@@ -62,5 +62,4 @@ data class Dog(
             return arrayOfNulls(size)
         }
     }
-
 }

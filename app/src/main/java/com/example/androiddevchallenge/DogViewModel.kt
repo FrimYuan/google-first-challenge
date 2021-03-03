@@ -26,14 +26,14 @@ class DogViewModel : ViewModel() {
                 "小狗",
                 "母",
                 "上海",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021648434984.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021648434984.jpg",
             ),
             Dog(
                 "汤圆",
                 "小狗",
                 "公",
                 "南昌",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021642417259.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021642417259.jpg",
             ),
 
             Dog(
@@ -41,7 +41,7 @@ class DogViewModel : ViewModel() {
                 "小狗",
                 "母",
                 "北京",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021651525447.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021651525447.jpg",
             ),
 
             Dog(
@@ -49,34 +49,31 @@ class DogViewModel : ViewModel() {
                 "小狗",
                 "公",
                 "上海",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103020022398727.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103020022398727.jpg",
             ),
-
 
             Dog(
                 "多肉",
                 "小狗",
                 "母",
                 "南昌",
-                "https://img.chonganjia.cn/diary/adopt/202012/31/202012311700271509.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202012/31/202012311700271509.jpg",
             ),
-
 
             Dog(
                 "小黑",
                 "小狗",
                 "母",
                 "上海",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021601025383.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021601025383.jpg",
             ),
-
 
             Dog(
                 "小一",
                 "小狗",
                 "母",
                 "北京",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021528324951.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021528324951.jpg",
             ),
 
             Dog(
@@ -84,7 +81,7 @@ class DogViewModel : ViewModel() {
                 "小狗",
                 "公",
                 "上海",
-                "https://img.chonganjia.cn/diary/adopt/202102/26/202102262106112199.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202102/26/202102262106112199.jpg",
             ),
 
             Dog(
@@ -92,7 +89,7 @@ class DogViewModel : ViewModel() {
                 "小狗",
                 "公",
                 "北京",
-                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021212019049.jpg"
+                "https://img.chonganjia.cn/diary/adopt/202103/02/202103021212019049.jpg",
             ),
         )
     }

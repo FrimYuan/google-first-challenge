@@ -19,18 +19,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Icon
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -55,30 +55,32 @@ class DogDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         getData()
         setContent {
-            Scaffold(topBar = {
-                TopAppBar(
-                    navigationIcon = {
-                        Button(
-                            onClick = { exit() },
-                            colors = ButtonDefaults.buttonColors(
-                                disabledBackgroundColor = Color.Transparent,
-                                disabledContentColor = Color.Transparent
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        navigationIcon = {
+                            Button(
+                                onClick = { exit() },
+                                colors = ButtonDefaults.buttonColors(
+                                    disabledBackgroundColor = Color.Transparent,
+                                    disabledContentColor = Color.Transparent
+                                )
+                            ) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.back),
+                                    contentDescription = "返回",
+                                    modifier = Modifier.size(30.dp),
+                                )
+                            }
+                        },
+                        title = {
+                            Text(
+                                text = dog?.name ?: "",
                             )
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.back),
-                                contentDescription = "返回",
-                                modifier = Modifier.size(30.dp),
-                            )
-                        }
-                    },
-                    title = {
-                        Text(
-                            text = dog?.name ?: "",
-                        )
-                    },
-                )
-            }) {
+                        },
+                    )
+                }
+            ) {
                 MyTheme {
                     dog?.let {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -123,7 +125,6 @@ class DogDetailActivity : AppCompatActivity() {
                                 onClick = {
                                     if (!isAdopt) {
                                         isAdopt = true
-
                                     }
                                 },
                                 enabled = !isAdopt,
