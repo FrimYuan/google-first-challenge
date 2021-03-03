@@ -15,22 +15,52 @@
  */
 package com.example.androiddevchallenge
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.background
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.androiddevchallenge.data.Dog
+import com.example.androiddevchallenge.ui.activity.DogDetailActivity
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.view.DogList
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel: DogViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                MyApp(jumpDetail = { pos, dog ->
+                    Intent(this, DogDetailActivity::class.java).apply {
+                        putExtra("pos", pos)
+                        putExtra("data", dog)
+                        startActivityForResult(this, 111)
+                    }
+                })
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            111 -> {
+                val pos: Int? = data?.getIntExtra("pos", -1)
+                val isAdopt: Boolean? = data?.getBooleanExtra("isAdopt", false)
+                pos?.let {
+                    if (pos != -1) {
+                        isAdopt?.let {
+                            viewModel.getData()[pos].isAdopt = isAdopt
+                        }
+                    }
+                }
             }
         }
     }
@@ -38,24 +68,10 @@ class MainActivity : AppCompatActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
-    }
-}
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MyApp()
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp()
+fun MyApp(viewModel: DogViewModel = viewModel(), jumpDetail: (position: Int, dog: Dog) -> Unit) {
+    Surface(Modifier.background(color = Color.Green)) {
+        DogList(
+            data = viewModel.getData(), jumpDetail
+        )
     }
 }
